@@ -40,9 +40,14 @@ class KafkaConsumer:
 
         self.broker_properties = {
             "bootstrap.servers": BROKER_URL,
-            "group.id": "kafka_consumer",  # attempted single group.id "kafka_consumer"
-            "auto.offset.reset": self.offset_earliest
+            "group.id": "kafka_consumer"  # single group.id "kafka_consumer"
         }
+
+        # ToDo: Configure auto.offset.rest
+        if offset_earliest is True:
+            self.broker_properties["auto.offset.reset"] = "earliest"
+        else:
+            self.broker_properties["auto.offset.reset"] = "beginning"
 
         # TODO: Create the Consumer, using the appropriate type.
         if is_avro is True:
