@@ -44,7 +44,7 @@ class KafkaConsumer:
         }
 
         # ToDo: Configure auto.offset.rest
-        if offset_earliest is True:
+        if offset_earliest:
             self.broker_properties["auto.offset.reset"] = "earliest"
         else:
             self.broker_properties["auto.offset.reset"] = "beginning"
